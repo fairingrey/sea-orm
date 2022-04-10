@@ -643,6 +643,15 @@ macro_rules! impl_into_active_value {
             }
         }
 
+        impl IntoActiveValue<$ty> for Option<$ty> {
+            fn into_active_value(self) -> ActiveValue<$ty> {
+                match self {
+                    Some(value) => Set(value),
+                    None => NotSet,
+                }
+            }
+        }
+
         impl IntoActiveValue<Option<$ty>> for Option<$ty> {
             fn into_active_value(self) -> ActiveValue<Option<$ty>> {
                 match self {
