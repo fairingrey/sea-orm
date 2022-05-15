@@ -11,8 +11,18 @@ members = [".", "entity", "migration"]
 
 [dependencies]
 tokio = { version = "1.0", features = ["full"] }
-axum = "0.4.8"
+axum = "^0.5.1"
 dotenv = "0.15.0"
-async-graphql-axum = "3.0.31"
+async-graphql-axum = "^3.0.38"
 entity = { path = "entity" }
 migration = { path = "migration" }
+
+[dependencies.sea-orm]
+path = "../../" # remove this line in your own project
+version = "^0.8.0"
+features = [
+  "runtime-tokio-native-tls",
+  # "sqlx-postgres",
+  # "sqlx-mysql",
+  "sqlx-sqlite"
+]
